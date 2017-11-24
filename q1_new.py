@@ -34,7 +34,7 @@ def Main():
 
     for i in range(len(id)):
         tmp=Calculation(float(distance[i]), float(speed[i]))
-        print "%10s %20.2f"%(id[i],tmp)
+        print "%10s %15.2f"%(id[i],tmp)
 
 
 
