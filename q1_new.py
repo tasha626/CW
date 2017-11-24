@@ -1,5 +1,5 @@
 
-id=['Bike','Swim','Running']
+id=['Swim','Bike','Running']
 speed=[1.77,14.66,5.1]
 distance=[]
 
