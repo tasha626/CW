@@ -48,6 +48,9 @@ def Main():
     print "======"*8
 
     time=[]
+    Name_clothing_max=''
+    Name_clothing_min=''
+
     for i in range(len(clothing)):
         tmp_time=0
         for x in range(len(Acivity)):
@@ -62,8 +65,15 @@ def Main():
 
         time.append(tmp_time)
         print "%17s %20.2f"%(clothing[i],tmp_time)
+    #Names for Clothing with largest and smallest
+    for i in range(len(clothing)):
+        if time[i]==max(time):
+            Name_clothing_max=clothing[i]
+        elif time[i]==min(time):
+            Name_clothing_min=clothing[i]
 
-    print "Smallest =",min(time)," Largest =",max(time)
+
+    print "Smallest =",Name_clothing_min,round(min(time),2),Name_clothing_max," Largest =",round(max(time),2)
 
 
 
