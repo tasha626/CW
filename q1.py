@@ -1,49 +1,41 @@
 
-#All in m
+id=['Swim','Bike','Running']
+speed=[1.77,14.66,5.1]
+distance=[]
 
-Swim_dis=float(input("Swiming Disance(m)"))
-Cycle_dis=float(input("Cycling Disance (m)"))
-Run_dis=float(input("Running Disance (m)"))
+def input():
+    for i in range(len(id)):
+        distance.append(float(raw_input("Disance for "+id[i])))
+        if distance[i]<0:
+
+            print "Error disance cannot be less than 0"
+            exit(0)
 
 
-Time_Swim=float(0)
-Time_Cycle=float(0)
-Time_Running=float(0)
+def Display():
 
-if Swim_dis<0 or Time_Cycle<0 or Run_dis<0:
-    print "Error one or more of your entered input was less than 0 please try again."
+    print "======"*3
 
-else:
+def Calculation(disance,speed):
+    Time=float(disance/speed)
+    return Time
 
-    Time=float(0)
 
-    def Swim():
-        Time=Swim_dis/1.722222
-        return Time
 
-    def Cycling():
-        Time=Cycle_dis/14.66667
-        return Time
-    def Running():
-        Time=Cycle_dis/5.083333
-        return Time
+def Main():
+    input()
 
- 
-
-    def Main():
-        print "\n \n"
-
-        print "swimming distance you entered:%.1f metres"%Swim_dis
-        print "For cycling distance you entered: %.1f metres"%Cycle_dis
-        print "For running distance you entered: %.1f metres"%Run_dis
+    for i in range(len(id)):
         print
-        print "Discipline       Time Taken (s)"
-        print "======"*4
-        print "Swim         %10.2f"%(Swim())
-        print "Cycling      %10.2f" % (Cycling())
-        print "Running      %10.2f" % (Running())
+        print "For",id[i],"distance you entered",distance[i],"Metres"
+    print "\n "*3
+    print "Discipline           Time Taken (s)"
+    print
 
-        Time=Swim()+Cycling()+Running()
-        print Time
+    for i in range(len(id)):
+        tmp=Calculation(float(distance[i]), float(speed[i]))
+        print "%10s %15.2f"%(id[i],tmp)
 
-    Main()
+
+
+Main()
