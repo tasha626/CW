@@ -26,10 +26,10 @@ def Display():
 
     print "======"*3
 
-def Calculation(disance,speed,modifier):
+def Calculation(distance,speed,modifier):
     modifier=1.0-modifier
-    Time=float((disance/speed)*modifier)
-    #print disance,speed,modifier,Time
+    Time=float((distance/speed)*modifier)
+    #print distance,speed,modifier,Time
     return Time
 
 
