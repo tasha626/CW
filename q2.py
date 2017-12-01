@@ -1,3 +1,9 @@
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+
+
 
 Acivity=['Swim','Bike','Running']
 speed=[1.77,14.66,5.1]
@@ -13,7 +19,9 @@ Sunglasses=[-0.1,0.08,0.05]
 Swimming=[-0.1,-0.02,0.6,0.35,-0.1]
 Cycling=[0.12,0.04,-0.05,-0.08,0.08]
 Running=[-0.25,0.25,-0.3,-0.12,0.05]
-
+y = []
+time=[]
+xx = [0,2,3]
 
 
 def input():
@@ -33,27 +41,56 @@ def Calculation(distance,speed,modifier):
     return Time
 
 
+
 def Clothing_modifyer_finder(Clothing,Acivity):
     Clothing=0
 
     return Clothing
 
+def Graph_plot():
+    ''' width = 2000
+    plt.boxplot(y,xx,width)
+    plt.hist(y,10)
+    plt.bar(y,xx,width,alpha='0.5')
+    #plot_url = py.plot_mpl(fig, filename='mpl-basic-bar')
+    plt.ylabel('Usage')
+    plt.title('usage')
+    plt.show()
+    '''
+    n = len(clothing)
+    window = [0,max(time)]
+    pylab.ylabel("Time")
+    pylab.xlabel("Time")
+    pylab.title("Histogram")
+
+    pylab.hist(y, 900, window)
+    pylab.save("q2d.png")
+    pylab.show()
+
 
 def Main():
     input()
 
-
-
     print "         Clothing              Time Taken (s)"
     print "======"*8
 
-    time=[]
     Name_clothing_max=''
     Name_clothing_min=''
 
+
+
+
+    #TODO x append does not work for some reason.
+    for i in range(10):
+        xx.append(i)
+
+
     for i in range(len(clothing)):
+        ##TODO Fix this
+
         tmp_time=0
         for x in range(len(Acivity)):
+
             if x==0:
                 tmp_time = tmp_time+Calculation(float(distance[x]), float(speed[x]),Swimming[i])
 
@@ -64,7 +101,8 @@ def Main():
                 tmp_time = tmp_time+Calculation(float(distance[x]), float(speed[x]),Running[i])
 
         time.append(tmp_time)
-        print "%17s %20.2f"%(clothing[i],tmp_time)
+        print "%17s | %20.2f"%(clothing[i],tmp_time)
+        y.append(tmp_time)
     #Names for Clothing with largest and smallest
     for i in range(len(clothing)):
         if time[i]==max(time):
@@ -74,8 +112,7 @@ def Main():
 
 
     print "Smallest =",Name_clothing_min,round(min(time),2),Name_clothing_max," Largest =",round(max(time),2)
-
-
+    Graph_plot()
 
 
 
