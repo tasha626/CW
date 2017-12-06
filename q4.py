@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt; plt.rcdefaults()
-import numpy as np
-import matplotlib.pyplot as plt
 import pylab
+import random
 
 
 
@@ -23,6 +22,11 @@ y = []
 time=[]
 xx = [0,2,3]
 
+
+def Swim_distance():
+
+
+    return random.randint()
 
 def input():
    distance.append(1500)
