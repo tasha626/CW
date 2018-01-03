@@ -1,20 +1,30 @@
+
+# Importing matplot & pylab
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 import pylab
 
 
+# Defining list of "Activities" & time taken to complete themnt# Empty list for distance so can be imputted by user
+
 
 Acivity=['Swim','Bike','Running']
-speed=[1.77,14.66,5.1]
+ speed=[1.77,14.66,5.1]
 distance=[]
 clothing=['Cycling Shoes','Running Shoes','Flippers','Swimming Goggles','Sunglasses']
+
+# Adding variables to clothing items changing timings for each event
 
 Cycling_Shoes=[-0.1,0.12,-0.25]
 Running_Shoes=[-0.02,0.04,0.25]
 Flippers=[0.6,-0.05,-0.3]
 Swimming_Goggles=[0.35,-0.08,-0.12]
 Sunglasses=[-0.1,0.08,0.05]
+ 
+
+# Changes to each activity from each clothing item catergorised 
+# Time as an open list & creating points for graph
 
 Swimming=[-0.1,-0.02,0.6,0.35,-0.1]
 Cycling=[0.12,0.04,-0.05,-0.08,0.08]
@@ -24,28 +34,36 @@ time=[]
 xx = [0,2,3]
 
 
+# Defining new function to append distances & calculations & display clearly with lines  
+# Time function gets value using return function
+
+
 def input():
    distance.append(1500)
    distance.append(40000)
    distance.append(10000)
 
 
-def Display():
+   def Display():
 
-    print "======"*3
+     print "======"*3
 
 def Calculation(distance,speed,modifier):
     modifier=1.0-modifier
     Time=float((distance/speed)*modifier)
-    #print distance,speed,modifier,Time
+    print distance,speed,modifier,Time
     return Time
 
+# Return function gets value from Clothing function
 
 
 def Clothing_modifyer_finder(Clothing,Acivity):
     Clothing=0
 
     return Clothing
+
+# Plotting graph, labelling y axis Time, x axis Time
+# Creating the histogram from imputted data
 
 def Graph_plot():
     n = len(clothing)
@@ -58,7 +76,8 @@ def Graph_plot():
     pylab.savefig("q2d.png")
     pylab.show()
 
-
+# Creating max & min, printing out histogram
+   
 def Main():
     input()
 
