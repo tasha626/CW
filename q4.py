@@ -1,114 +1,155 @@
-import matplotlib.pyplot as plt; plt.rcdefaults()
-import pylab
 import random
-
-
-
-Acivity=['Swim','Bike','Running']
-speed=[1.77,14.66,5.1]
+id=['Swim','Bike','Running']
+speed=[1.72,14.66,5.1]
 distance=[]
-clothing=['Cycling Shoes','Running Shoes','Flippers','Swimming Goggles','Sunglasses']
-
-Cycling_Shoes=[-0.1,0.12,-0.25]
-Running_Shoes=[-0.02,0.04,0.25]
-Flippers=[0.6,-0.05,-0.3]
-Swimming_Goggles=[0.35,-0.08,-0.12]
-Sunglasses=[-0.1,0.08,0.05]
-
-Swimming=[-0.1,-0.02,0.6,0.35,-0.1]
-Cycling=[0.12,0.04,-0.05,-0.08,0.08]
-Running=[-0.25,0.25,-0.3,-0.12,0.05]
-y = []
-time=[]
-xx = [0,2,3]
+timetaken=[]
+total_time=[]
+racetotal=[]
+swim_dist=[]
 
 
-def Swim_distance():
+clothing=['Cycling Shoes','Running Shoes','Flippers']
+eye_wear=['Swimming Goggles', 'Sunglasses']
 
+combo=[]
 
-    return random.randint()
+iterations = len(clothing)*len(eye_wear)
 
-def input():
-   distance.append(1500)
-   distance.append(40000)
-   distance.append(10000)
+Cycling_Shoes=[0.9,1.12,0.75]
+Running_Shoes=[0.98,1.04,1.25]
+Flippers=[1.6,0.95,0.7]
+Gog=[0.35,-0.08,-0.12]
+Sun=[-0.1,0.08,0.05]
 
+modifier = Cycling_Shoes + Running_Shoes + Flippers
 
-def Display():
-
-    print "======"*3
-
-def Calculation(distance,speed,modifier):
-    modifier=1.0-modifier
-    Time=float((distance/speed)*modifier)
-    #print distance,speed,modifier,Time
-    return Time
+count = 0
+while (count < 15):
+   del distance [:]
+   count = count+1
 
 
 
-def Clothing_modifyer_finder(Clothing,Acivity):
-    Clothing=0
-
-    return Clothing
-
-def Graph_plot():
-    n = len(clothing)
-    window = [0,max(time)]
-    pylab.ylabel("Time")
-    pylab.xlabel("Time")
-    pylab.title("Histogram")
-
-    pylab.hist(y, 900, window)
-    pylab.savefig("q2d.png")
-    pylab.show()
+   swim=random.randrange(1000,20001)
+   swim_dist.append(swim)
 
 
-def Main():
-    input()
+   def input():
+      distance.append(swim)
+      distance.append(40000)
+      distance.append(10000)
 
-    print "         Clothing              Time Taken (s)"
-    print "======"*8
+   def Display():
 
-    Name_clothing_max=''
-    Name_clothing_min=''
+       print "======"*3
+
+   def Calculation(distance,speed,modifier,eyewear):
+       Time=float(distance/((speed*modifier)+(speed*eyewear)))
+       return Time
 
 
 
+   def Main():
+       input()
+       racetotal=[]
+    
 
-    #TODO x append does not work for some reason.
-    for i in range(10):
-        xx.append(i)
+       for i in range(len(id)):
+           print
+           print "For",id[i],"distance you entered",distance[i],"Metres"
+       print "\n "*3
+
+       for i in range (len(id)):
+           print "Equipment Combination: %5s and %5s "%(clothing[i], eye_wear[0])
+           combo.append(clothing[i]+' and '+eye_wear[0])
+           print
+           print "Discipline           Time Taken (s)"
+           print
+           z=i*3
+        
+        
+           del timetaken[:]
+        
+        
+       
+
+        
+           for t in range(len(id)):
+                 
+                   tmp=Calculation(float(distance[t]), float(speed[t]), float(modifier[z+t]), float(Gog[t]))
+                
+                   timetaken.append(tmp)
+                   racetotal=sum(timetaken)
+                
+                
+                   print "%10s %20.2f"%(id[t],tmp)
+        
+           total_time.append(racetotal)
+       
+           print ""
+           print "The total race time is: %5.2f seconds."%(racetotal)        
+
+           print "\n" *2
+          
+        
+
+        
+       for i in range (len(id)):
+           print "Equipment Combination: %5s and %5s "%(clothing[i], eye_wear[1])
+           combo.append(clothing[i]+' and '+eye_wear[1])
+           print
+           print "Discipline           Time Taken (s)"
+           print
+           z=i*3
+        
+           del timetaken[:]
+        
+        
+              
+
+        
+           for t in range(len(id)):
+
+                
+                   tmp=Calculation(float(distance[t]), float(speed[t]), float(modifier[z+t]), float(Sun[t]))
+                
+                   timetaken.append(tmp)
+                   racetotal=sum(timetaken)
+                
+                
+                
+                   print "%10s %20.2f"%(id[t],tmp)
+        
+           total_time.append(racetotal)
+        
+       
+        
+           print ""
+           print "The total race time is: %5.2f seconds."%(racetotal)
+           print "\n"*2
+ 
+
+               
+                
+        
 
 
-    for i in range(len(clothing)):
-        ##TODO Fix this
 
-        tmp_time=0
-        for x in range(len(Acivity)):
-
-            if x==0:
-                tmp_time = tmp_time+Calculation(float(distance[x]), float(speed[x]),Swimming[i])
-
-            if x==1:
-                tmp_time = tmp_time+Calculation(float(distance[x]), float(speed[x]),Cycling[i])
-
-            if x==2:
-                tmp_time = tmp_time+Calculation(float(distance[x]), float(speed[x]),Running[i])
-
-        time.append(tmp_time)
-        print "%17s | %20.2f"%(clothing[i],tmp_time)
-        y.append(tmp_time)
-    #Names for Clothing with largest and smallest
-    for i in range(len(clothing)):
-        if time[i]==max(time):
-            Name_clothing_max=clothing[i]
-        elif time[i]==min(time):
-            Name_clothing_min=clothing[i]
+       print ""
+       print ""
+    
+       
+       print
 
 
-    print "Smallest =",Name_clothing_min,round(min(time),2),"(s)",Name_clothing_max," Largest =",round(max(time),2),"(s)"
-    Graph_plot()
+       
+       
+       
+    
 
 
+   Main()
 
-Main()
+print "Johnny will take: %5.2f seconds to complete the race in the fastest combination." %(min(total_time))
+sort=total_time.index(min(total_time))
+print "The fastest combination is: %s" %(combo[sort])
